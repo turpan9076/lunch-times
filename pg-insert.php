@@ -6,19 +6,19 @@
     }else{
         print("接続完了\n");
     }
-
+    
     $r_id = 1;
-    $m_id = 1;
-    $datetime = new DateTime();
+    $m_id = 37;
+    $datetime = date("Y-m-d H:i:s");;
 
-    $query = "INSERT INTO report(report_id,menu_id,report_time) VALUES ($r_id,$m_id,$datetime)";
-    $insert = pg_query($db_conn,$query); 
+    $query = "INSERT INTO report (report_id,menu_id,report_time) VALUES ($1,$2,$3)";
+    $insert = pg_query_params($db_conn,$query,array($r_id,$m_id,$datetime)); 
     if(!$insert){
         print("Insert error\n");
     }else{
         print("Insert success\n");
     }
-
+    
     $query = "SELECT * FROM report";
     $result = pg_query($db_conn,$query);
     if(!$result){
