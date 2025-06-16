@@ -7,7 +7,6 @@
         print("接続完了\n");
     }
 
-    sleep(1);
     $query = "SELECT * FROM menu";
     $result = pg_query($db_conn,$query); 
     if(!$result){
@@ -15,7 +14,7 @@
     }else{
         print("クエリ実行成功\n");
     }
-
+    
     for($i=0;$i<pg_num_rows($result);$i++){
         $rows = pg_fetch_array($result,NULL,PGSQL_ASSOC);
         print("menu_id=".$rows["menu_id"]);
@@ -23,7 +22,6 @@
         print("menu_name=".$rows["menu_name"]);
         print("\n");
     }   
-    sleep(1);
 
     $db_close = pg_close($db_conn);
     if($db_close){
