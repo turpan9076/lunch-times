@@ -9,7 +9,7 @@
     
     $r_id = 1;
     $m_id = 37;
-    $datetime = date("Y-m-d H:i:s");;
+    $datetime = date("Y-m-d H:i:s");
 
     $query = "INSERT INTO report (report_id,menu_id,report_time) VALUES ($1,$2,$3)";
     $insert = pg_query_params($db_conn,$query,array($r_id,$m_id,$datetime)); 
