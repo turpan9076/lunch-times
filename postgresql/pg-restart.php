@@ -1,5 +1,5 @@
 <?php
-    /*データベースに接続＋データベースから読み取り*/
+    /*データベースに接続＋データベースのテーブルをリセット*/
 
     //データベースをセット
     $db_set = "host = localhost user = team6 dbname = team6db password = hirano";
@@ -29,6 +29,7 @@
 
     $query = "TRUNCATE report RESTART IDENTITY";
     $delete = pg_query($db_conn,$query);
+    print("RESTART\n");
 
     //データベースのreportテーブルからデータを読み取る
     $query = "SELECT * FROM report";
