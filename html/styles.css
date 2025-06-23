@@ -1,0 +1,242 @@
+/* --------------------------------------------------
+   Reset / ベースリセット（必要に応じて追加）
+-------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------
+   全体設定
+-------------------------------------------------- */
+html {
+  font-size: 16px;        /* 基準フォントサイズ */
+  line-height: 1.5;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------
+   レイアウトコンテナ
+-------------------------------------------------- */
+.site-header,
+.site-nav,
+.site-main,
+.site-footer {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* --------------------------------------------------
+   ヘッダー
+-------------------------------------------------- */
+.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------
+   ナビゲーション
+-------------------------------------------------- */
+.site-nav {
+  background-color: #fff;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #007acc;
+}
+
+/* --------------------------------------------------
+   メインコンテンツ
+-------------------------------------------------- */
+.content-section {
+  background-color: #fff;
+  padding: 0.8rem;
+  margin: 1.3rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   フッター
+-------------------------------------------------- */
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* --------------------------------------------------
+   レスポンシブ対応（例）
+-------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.setmenu-info{
+  display: block;          /* 横幅いっぱいに広げたり、ブロック扱いに */
+  width: 100%;             /* 必要に応じて固定幅にしてもOK */
+  max-width: 400px;        /* 任意：最大幅 */
+  margin: 5px auto;       /* 中央寄せなど */
+  padding: 20px;           /* 内側余白を十分確保 */
+  font-size: 1rem;         /* 必要に応じて調整 */
+  line-height: 1.5;        /* テキストの読みやすさ向上 */
+  text-align: left;        /* テキストを左寄せ */
+  background-color: #ffffff;   /* ボタン背景色 */
+  color: rgb(0, 0, 0);            /* テキスト色 */
+  border: none;
+  border-radius: 8px;      /* 角丸 */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+}
+
+.open-meal-info{
+  display: block;          /* 横幅いっぱいに広げたり、ブロック扱いに */
+  width: 100%;             /* 必要に応じて固定幅にしてもOK */
+  max-width: 400px;        /* 任意：最大幅 */
+  margin: 5px auto;       /* 中央寄せなど */
+  padding: 20px;           /* 内側余白を十分確保 */
+  font-size: 1rem;         /* 必要に応じて調整 */
+  line-height: 1.5;        /* テキストの読みやすさ向上 */
+  text-align: left;        /* テキストを左寄せ */
+  background-color: #ffffff;   /* ボタン背景色 */
+  color: rgb(0, 0, 0);            /* テキスト色 */
+  border: none;
+  border-radius: 8px;      /* 角丸 */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+}
+
+.meal-info-header {
+  margin-bottom: 8px;
+}
+
+.meal-info-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 価格を左、詳細を右に */
+}
+
+.open-meal-info-small {
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ボタンレイアウト */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 4px;
+    column-gap: 8px;
+    max-width: 800px; /* 必要に応じて調整 */
+    margin: 10px auto;
+}
+
+/* オーバーレイ */
+.meal-info-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;           /* 非表示状態 */
+  justify-content: center; /* 中央揃え */
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 表示時に flex で中央表示 */
+.meal-info-overlay.show {
+  display: flex;
+}
+
+/* モーダル本体 */
+.meal-info-content {
+  width: 90%; 
+  height: 80%;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.close-button{
+  padding: 4px 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.report-button{
+  display: block;          /* 横幅いっぱいに広げたり、ブロック扱いに */
+  width: 50%;             /* 必要に応じて固定幅にしてもOK */
+  max-width: 200px;        /* 任意：最大幅 */
+  margin: 20px auto;       /* 中央寄せなど */
+  padding: 20px;           /* 内側余白を十分確保 */
+  font-size: 1rem;         /* 必要に応じて調整 */
+  line-height: 1.5;        /* テキストの読みやすさ向上 */
+  text-align: center;        /* テキストを左寄せ */
+  background-color: #ffffff;   /* ボタン背景色 */
+  color: rgb(0, 0, 0);            /* テキスト色 */
+  border: none;
+  border-radius: 20px;      /* 角丸 */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+}
+
+.indent{
+  padding-left:2em;
+}
+
+.explain-content{
+  border-top: 1px solid #ccc; /* 線の太さ・線種・色を調整 */
+  padding-top: 8px;          /* 線とテキストの隙間を確保 */
+  margin-top: 16px;          /* 上の要素との余白（必要に応じて） */
+}

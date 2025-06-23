@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>divをボタン風にする例</title>
+  <style>
+    .clickable-card {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      cursor: pointer;
+      user-select: none;
+    }
+    .clickable-card:hover {
+      background-color: #218838;
+    }
+    .clickable-card:active {
+      background-color: #1e7e34;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset;
+    }
+  </style>
+</head>
+<body>
+  <h1>divをボタン風にする例</h1>
+
+  <div id="myCardButton" class="clickable-card" role="button" tabindex="0" aria-pressed="false">
+    <h2>大きなクリック可能エリア</h2>
+    <p>この領域全体をクリックまたはEnter/Spaceで押下できます。説明や注意事項などをここに書きます。</p>
+  </div>
+
+  <script>
+    const card = document.getElementById('myCardButton');
+    function activateCard() {
+      alert('カード風ボタンが押されました！');
+      console.log('ここに動作処理を書く');
+      // 必要なら aria-pressed を更新:
+      // let pressed = card.getAttribute('aria-pressed') === 'true';
+      // card.setAttribute('aria-pressed', String(!pressed));
+    }
+    // クリックイベント
+    card.addEventListener('click', activateCard);
+    // キーボード操作対応（Enter / Space）
+    card.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();  // スクロール防止など
+        activateCard();
+      }
+    });
+  </script>
+</body>
+</html>
+
