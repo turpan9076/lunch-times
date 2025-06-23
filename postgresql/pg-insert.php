@@ -13,7 +13,7 @@
     
     //追加するデータを設定
     $m_id = 37;
-    $datetime = date("Y-m-d H:i:s");;
+    $datetime = date("Y-m-d H:i:s");
 
     //データを追加
     $query = "INSERT INTO report (menu_id,report_time) VALUES ($1,$2)";
