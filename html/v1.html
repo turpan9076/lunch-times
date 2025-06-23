@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スクロールサンプル</title>
+  <style>
+    /* 全体にスムーズスクロールを適用 */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* セクションの見た目サンプル */
+    section {
+      height: 800px;
+      padding: 2rem;
+      background: #f0f0f0;
+      border-bottom: 1px solid #ccc;
+    }
+    #target {
+      background: #e0ffe0;
+    }
+    /* ボタンのスタイル例 */
+    .scroll-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.8rem 1.2rem;
+      background: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .scroll-btn:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 固定表示のスクロールボタン -->
+  <button class="scroll-btn" id="scrollBtn">ここへ移動</button>
+
+  <!-- 長いコンテンツの例 -->
+  <section><h2>セクション 1</h2><p>…前半のコンテンツ…</p></section>
+  <section><h2>セクション 2</h2><p>…さらに下へ…</p></section>
+
+  <!-- この位置までスクロールしたい -->
+  <section id="target"><h2>ターゲットセクション</h2><p>ここがスクロール先です。</p></section>
+
+  <section><h2>セクション 4</h2><p>…以降のコンテンツ…</p></section>
+
+  <script>
+    //ボタン要素とターゲット要素を取得
+    const btn = document.getElementById('scrollBtn');
+    const target = document.getElementById('target');
+
+    //クリック時の処理を登録
+    btn.addEventListener('click', () => {
+      // 要素の位置を取得してスクロール
+      const topPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topPosition,       // ページ上端からターゲットまでの距離
+        behavior: 'smooth'      // スムーズスクロール
+      });
+    });
+  </script>
+
+</body>
+</html>

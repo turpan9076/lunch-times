@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ここにページの説明を入れます">
+  <meta name="keywords" content="キーワード1, キーワード2, キーワード3">
+  <meta name="author" content="Your Name">
+  <link rel="icon" href="favicon.ico">
+  <title>ページのタイトル</title>
+  <!-- 外部スタイルシート読み込み -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <!-- <img src="img/titleImg.jpg" alt="タイトル名"> -->
+    <h1 class="site-title">LUNCH TIMES</h1>
+  </header>
+
+  <nav class="site-nav">
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link" data-index="1">今日のメニュー</a></li>
+      <li><a href="#" class="nav-link" data-index="2">メニュー 一覧</a></li>
+      <li><a href="#" class="nav-link" data-index="3">使い方</a></li>
+      <li><a href="#" class="nav-link" data-index="4">管理者ページ</a></li>
+    </ul>
+  </nav>
+
+  <main class="site-main">
+    <section id="target1"class="content-section">
+      <h2 class="section-title">🔶本日のメニュー</h2>
+      <button class="setmenu-info">
+        <h2>
+          Aセット
+          <h4>名前</h4>
+          <h4><strong>￥400</strong></h4>
+        </h2>
+      </button>
+      <button class="setmenu-info">
+        <h2>
+          Bセット
+          <h4>名前</h4>
+          <h4><strong>￥400</strong></h4>
+        </h2>
+      </button>
+    </section>
+
+    <section id="target2" class="content-section">
+      <h2 class="section-title">🔶メニュー 一覧 ※<span id="today"></span></h2>
+      <p class="section-text">
+        <div class="button-container">
+          <button id="openMealInfo" class="open-meal-info" data-index="1">
+            <div class="meal-info-header">
+              <strong>Aセット</strong><br>
+              <h5>売り切れ報告 1</h5>
+            </div>
+            <div class="meal-info-footer">
+              <strong class="price">￥400</strong>
+              <span class="open-meal-info-small">詳細</span>
+            </div>
+          </button>
+
+          <button id="openMealInfo" class="open-meal-info" data-index="2">
+            <div class="meal-info-header">
+              <strong>Bセット</strong><br>
+              <h5>売り切れ報告 1</h5>
+            </div>
+            <div class="meal-info-footer">
+              <strong class="price">￥400</strong>
+              <span class="open-meal-info-small">詳細</span>
+            </div>
+          </button>
+
+          <button id="openMealInfo" class="open-meal-info" data-index="3">
+            <div class="meal-info-header">
+              <strong>カレー</strong><br>
+              <h5>売り切れ報告 1</h5>
+            </div>
+            <div class="meal-info-footer">
+              <strong class="price">￥400</strong>
+              <span class="open-meal-info-small">詳細</span>
+            </div>
+          </button>
+        </div>
+        <!-- オーバーレイ＋モーダル本体（初期状態は非表示） -->
+        <div id="mealInfoOverlay" class="meal-info-overlay" aria-hidden="true">
+         <div class="meal-info-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button id="closeMealInfo" class="close-button">✕</button>
+            <h2 style="text-align:center" id="mealInfoTitle">ごはんのなまえ</h2><br>
+            <p style="text-align:center"><strong>￥400</strong><p>
+            <h3 style="text-align:center">売り切れ報告 1</h3>
+            <button id="reportButton" class="report-button">売り切れを<br>報告する</button>
+         </div>
+      </div>
+      </p>
+    </section>
+    
+     <section id="target3" class="content-section">
+      <h2 class="section-title">🔶使い方</h2>
+      <p class="section-text">
+        <h4 class="explain-content">今日のAセット,Bセットの確認
+          <h5 class="indent">ホーム画面の「<strong>🔶今日のメニュー</strong>」から今日のAセット,Bセットを確認できます。</h5>
+        </h4>
+        <h4 class="explain-content">メニューについて
+          <h5 class="indent">メニューの名前や価格,売り切れ報告数は「<strong>🔶メニュー 一覧</strong>」から確認できます</h5><br>
+          <h5 class="indent">「<strong>詳細</strong>」をクリックすることで各メニューの詳細情報を見れたり売り切れ報告を行うことができます</h5>
+        </h4>
+      </p>
+    </section>
+
+    <section id="target4" class="content-section">
+      <p class="section-text">管理者画面はこちら</p><br>
+      <p class="section-text">（パスワードが必要です）</p>
+      <a href="admin.html" class="nav-link">＞管理者ページへ</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
