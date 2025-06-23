@@ -25,6 +25,7 @@
         print("Insert success\n");
     }
     
+    /*
     //データベースのreportテーブルからデータを読み取る
     $query = "SELECT * FROM report";
     $result = pg_query($db_conn,$query);
@@ -39,7 +40,8 @@
             printf("|report_time=".$rows["report_time"]);
         }
     }
-
+    */
+    
     //データベースとの通信を切断
     $db_close = pg_close($db_conn);
     if($db_close){
