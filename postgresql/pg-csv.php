@@ -13,7 +13,7 @@
     }
     
     //現在のデータをリセット
-    $query = "TRUNCATE report RESTART IDENTITY";
+    $query = "TRUNCATE report, menu RESTART IDENTITY";
     $delete = pg_query($db_conn,$query);
     print("RESTART\n");
 
@@ -21,19 +21,26 @@
     if($menu_csv==false){
         print("csvファイルが開けませんでした。");
     }
+    //1行目読み飛ばし
+    fgetcsv($menu_csv);
 
-    while(($row = fgetcsv($csvFile)) !== false){
+    
+    while(($row = fgetcsv($menu_csv)) !== false){
         $name = $row[0];
         $type = $row[1];
-        $price = (int)$row[2];
-        $date = $row[3];
-        $result = pg_query_params($db_conn,"INSERT INTO menu (menu_name,menu_type,
-        menu_price,menu_date) VALUES ($1,$2,$3,$4)",array($naem,$type,$price,$date));
+        $image = $row[2];
+        $price = (int)$row[3];
+        $date_str = $row[4];
+        $report = $row[5];
+        $result = pg_query_params($db_conn,"INSERT INTO menu (menu_name,menu_type,menu_image,
+        menu_price,menu_date,report) VALUES ($1,$2,$3,$4,$5,$6)",array($name,$type,$image,$price,$date_str,$report));
         if(!$result){
             print("エラー発生");
+            break;
         }
     }
-
+    
+    /*
     //データベースのmenuテーブルからデータを読み取る
     $query = "SELECT * FROM menu";
     $result = pg_query($db_conn,$query); 
@@ -45,12 +52,12 @@
         for($i=0;$i<pg_num_rows($result);$i++){
             $rows = pg_fetch_array($result,NULL,PGSQL_ASSOC);
             print("menu_id=".$rows["menu_id"]);
-            print("\n");
             print("menu_name=".$rows["menu_name"]);
             print("\n");
         }
     }
-    
+    */
+
     //データベースとの通信を切断
     $db_close = pg_close($db_conn);
     if($db_close){
