@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者認証</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="home-link-container">
+            <a href="home.html" class="home-link">&lt; ホーム</a>
+        </div>
+    </header>
+    <main class="site-main">
+        <section class="content-section">
+            <h2 class="section-title">管理者認証</h2>
+            <form id="loginForm" action="#" method="post" class="auth-form">
+                <div class="form-group">
+                    <label for="password" class="auth-label">password</label>
+                    <input type="password" id="password" name="password" required class="auth-input">
+                </div>
+                <button type="submit" class="auth-button">認証する</button>
+                <p id="errorMessage" class="error-message hidden">WRONG PASSWARD</p>
+            </form>
+        </section>
+    </main>
+</body>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+
+            const CORRECT_PASSWORD = "hirano"; // パスワード直書き
+
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // フォームの通常の送信を防ぐ
+
+                const enteredPassword = passwordInput.value;
+
+                if (enteredPassword === CORRECT_PASSWORD) {
+                    // パスワードが一致した場合
+                    window.location.href = 'admin.html'; // 認証成功時の遷移先
+                } else {
+                    // パスワードが一致しない場合
+                    errorMessage.classList.remove('hidden'); // エラーメッセージを表示
+                }
+            });
+        });
+    </script>
+</html>

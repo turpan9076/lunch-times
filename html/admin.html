@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title>管理者ページ</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="home-link-container">
+            <a href="home.html" class="home-link">&lt; ホーム</a>
+        </div>
+    </header>
+    <main class="site-main">
+        <section class="content-section">
+            <h2 class="section-title">管理者ページ</h2>
+            <h3 class="section-text">データ入力</h3>
+            <form action="pg-csvupload.php" method="post" enctype="multipart/form-data">
+                <label for="csv_file">ファイルを入れる（.csv）:</label>
+                <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
