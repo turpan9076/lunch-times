@@ -1,6 +1,14 @@
+const menu = window.MENU;
+
 //const openBtn = document.getElementById('openMealInfo');
 const overlay = document.getElementById('mealInfoOverlay');
 const closeBtn = document.getElementById('closeMealInfo');
+
+//オーバーレイ
+const titleEl    = document.getElementById('mealInfoTitle');
+const priceEl    = document.getElementById('mealInfoPrice');
+const soldEl     = document.getElementById('mealInfoSold');
+const reportBtn  = document.getElementById('reportButton');
 
 // 開く
 document.querySelectorAll('.open-meal-info').forEach(openBtn =>{
@@ -8,6 +16,10 @@ document.querySelectorAll('.open-meal-info').forEach(openBtn =>{
     overlay.classList.add('show');
     overlay.setAttribute('aria-hidden', 'false');
     const idx = openBtn.getAttribute('data-index');//idxを取得
+    const row = menu[idx];
+    titleEl.textContent = row.menu_name;
+    priceEl.textContent = `￥${row.menu_price}`;
+    soldEl.textContent  = row.report;
     // フォーカスをモーダル内に移動
     closeBtn.focus();
     });
