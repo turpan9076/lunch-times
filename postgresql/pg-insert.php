@@ -1,6 +1,6 @@
 <?php
     /*データベースに接続＋データベースに要素を追加*/
-    
+
     //データベースをセット
     $db_set = "host = localhost user = team6 dbname = team6db password = hirano";
     //データベースと接続
@@ -12,13 +12,12 @@
     }
     
     //追加するデータを設定
-    $r_id = 1;
     $m_id = 37;
     $datetime = date("Y-m-d H:i:s");
 
     //データを追加
-    $query = "INSERT INTO report (report_id,menu_id,report_time) VALUES ($1,$2,$3)";
-    $insert = pg_query_params($db_conn,$query,array($r_id,$m_id,$datetime)); 
+    $query = "INSERT INTO report (menu_id,report_time) VALUES ($1,$2)";
+    $insert = pg_query_params($db_conn,$query,array($m_id,$datetime)); 
     if(!$insert){
         print("Insert error\n");
     }else{
@@ -33,15 +32,15 @@
         print("result error\n");
     }else{
         print("result success\n");
-        $rows = pg_fetch_array($result,NULL,PGSQL_ASSOC);
         for($i=0;$i<pg_num_rows($result);$i++){
+            $rows = pg_fetch_array($result,NULL,PGSQL_ASSOC);
             printf("report_id=".$rows["report_id"]);
             printf("|menu_id=".$rows["menu_id"]);
             printf("|report_time=".$rows["report_time"]);
         }
     }
     */
-    
+
     //データベースとの通信を切断
     $db_close = pg_close($db_conn);
     if($db_close){
