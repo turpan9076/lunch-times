@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ユーザー一覧</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>ユーザー一覧</h1>
+  <table id="user-table">
+    <thead>
+      <tr><th>ID</th><th>名前</th><th>メールアドレス</th></tr>
+    </thead>
+    <tbody>
+      <!-- ここに JS で行を追加します -->
+    </tbody>
+  </table>
+
+  <script>
+    // API の URL（json-server のエンドポイント）
+    const API_URL = 'http://localhost:3000/users';
+
+    async function loadUsers() {
+      try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('データ取得に失敗しました');
+        const users = await res.json();
+
+        const tbody = document.querySelector('#user-table tbody');
+        users.forEach(u => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${u.id}</td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error(err);
+        alert('ユーザー一覧の読み込みでエラーが発生しました');
+      }
+    }
+
+    // ページ読み込み時に実行
+    document.addEventListener('DOMContentLoaded', loadUsers);
+  </script>
+</body>
+</html>
